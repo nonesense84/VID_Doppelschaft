@@ -304,15 +304,15 @@ void setNorthWestB(){
   digitalWrite(A3,LOW);
 }
 /*===Diese Funktion schaltet die Spulen vollständig ab===*/
-void switchOffAllMotors(){
-  digitalWrite(A0,LOW);
-  digitalWrite(A1,LOW);
-  digitalWrite(A2,LOW);
-  digitalWrite(A3,LOW);
+void switchOffMotorA(){
   digitalWrite(8,LOW);
   digitalWrite(9,LOW);
   digitalWrite(10,LOW);
   digitalWrite(12,LOW);
 }
-
-
+void switchOffMotorB(){
+  digitalWrite(A0,LOW);
+  digitalWrite(A1,LOW);
+  digitalWrite(A2,LOW);
+  digitalWrite(A3,LOW);
+}

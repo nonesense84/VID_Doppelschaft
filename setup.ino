@@ -64,6 +64,8 @@ void SyncPointers(boolean hardreset){
     }
     AktPositionA = 0;                         //Ganz unten angekommen, kann Ist-Position als 0...
     AktPositionB = 0;                         //...(unterer Anschlag) angenommen werden
+    switchOffMotorA();
+    switchOffMotorB();
   }
   else{                                       //Normaler Zeigerreset mach Neustart.
     AktPositionA = word(EEPROM.read(0),EEPROM.read(1))+40;  //Die Aktuellen Zeigerpositionen (von vor dem Ausschalten)...
@@ -86,6 +88,8 @@ void SyncPointers(boolean hardreset){
       }
       delay(3);
     }
+    switchOffMotorA();
+    switchOffMotorB();
   }
   EEPROM.write(0, 0);                          //Nach der Syncronisation stehen die Zeiger bei 0,...
   EEPROM.write(1, 0);                          //...also am unteren Anschlag. Das wird im EEPROM vermerkt

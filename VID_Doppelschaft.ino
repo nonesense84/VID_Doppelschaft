@@ -1,4 +1,4 @@
-//Doppelschaftmotoren mit Anschlag SW1401B
+//Doppelschaftmotoren mit Anschlag SW1401C
 #include <Wire.h>                 //Unsere Baugruppe benötigt I²C
 #include <EEPROM.h>               //I²C-Adresse (nach Änderung) und Letzte Zeigerposition liegen im EEPROM
 int AktPositionA = 0;            //Die Aktuellen und die Zielpositionen unserer Zeiger
@@ -67,11 +67,13 @@ void loop(){
     EEPROM.write(0, ((AktPositionA >> 8) & 0xFF));                                //...schreiben wir das Highbyte ins EEPROM auf Adresse 1...
     EEPROM.write(1, ((AktPositionA >> 0) & 0xFF));                                //...und das Lowbyte nach 2
     storeA = false;                                                               //Speichervormerkung deaktivieren, da ja nun gespeichert
+    switchOffMotorA();
   }
   if (storeB){                                                                    //Wenn Speichervorgang für B vorgemerkt, dann...
     EEPROM.write(2, ((AktPositionB >> 8) & 0xFF));                                //...schreiben wir das Highbyte ins EEPROM auf Adresse 3...
     EEPROM.write(3, ((AktPositionB >> 0) & 0xFF));                                //...und das Lowbyte nach 4
     storeB = false;                                                               //Speichervormerkung deaktivieren, da ja nun gespeichert
+    switchOffMotorB();
   }
 }
   /*=========Der Eingabewert kommt als Skalenwert. Hier wird dieser einem Schrittwert zugeordnet=========*/
